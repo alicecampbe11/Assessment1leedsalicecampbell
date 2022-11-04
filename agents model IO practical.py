@@ -8,7 +8,9 @@ Created on Fri Sep 16 11:48:55 2022
 @author: alicecampbell
 
 
-IO practical. This model has a copy of the environment and a list of the agents. 
+IO practical. This model has a copy of the environment and a list of the 
+agents. Overall this practical lets agents have access to the environment, 
+'nibbling' at the environment data.
 
 """
 
@@ -19,7 +21,8 @@ import csv
 
 environment = []
 
-# the below creates the environment using the csv file
+# the below creates the environment graphic in spyder, using the data from
+# an imported csv file
 with open('in.txt', newline='') as f:
     dataset = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
     for row in dataset:
@@ -50,7 +53,7 @@ def distance_between(agents_row_a, agents_row_b):
     ((agents_row_a.y - agents_row_b.y)**2))**0.5
 
 num_of_agents = 10
-num_of_iterations = 5
+num_of_iterations = 1
 agents = []
 
 # Below I have edited the code that makes the agents to allow each agent access
@@ -62,7 +65,8 @@ for i in range(num_of_agents):
     # print(agents[i].x, agents[i].y)  
         print(agents[i])
 
-# Move the agents and call the eating method from the agent framework file:
+# the below code noves the agents and calls the eating method from the agent 
+# framework file:
 for j in range(num_of_iterations):
     for i in range(num_of_agents):
         agents[i].move()
@@ -70,8 +74,7 @@ for j in range(num_of_iterations):
 
 print("after move")
 
-# printing agents again to test they have moved from 
-# original positions
+# printing agents again to test they have moved from original positions
 for i in range(num_of_agents):
     # print(agents[i].x, agents[i].y)  
         print(agents[i])

@@ -50,9 +50,9 @@ class Agent:
         if self.store >= 100:
             self.environment[self.y][self.x] += self.store
             self.store = 0 
-            #  the above makes sure that if agents has 'nibbled' too much data 
-            # (over 100), they 'dump' the store back onto the environment; 
-             # leaving the agents store as 0. 
+#  the above makes sure that if agents has 'nibbled' too much data 
+ # (over 100), they 'dump' the store back onto the environment; 
+ # leaving the agents store as 0. 
                 
     
     
