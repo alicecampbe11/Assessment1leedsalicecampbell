@@ -1,29 +1,31 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+Created on Wed Nov  2 16:11:32 2022
 
-# This is a separate file for agents. This file will not be able to reflect the 
-# environmet in the model file. 
+@author: alicecampbell
+"""
 
 
 import random
 
 class Agent:
-    # I have added 'environment' next to 'self' below, due to a TypeError message 
-    # appearing in the IO model file that said:
-    #' __init__() takes 1 positional argument but 2 were given'. 
-    def __init__(self, environment):
+# Have added agents alongside self and environment.
+    def __init__(self,i, environment, agents):
+# the below code allows to identify each indvidual agent via a name
+        self.i = i
         self.environment = environment
+        self.agents = agents 
         self.x= random.randint(0,99)
         self.y=random.randint(0,99)
         self.environment = environment 
-        self.store = 0
+        self.store = 0 
         
-    # the below will detail the store of each agent 
+# the below will detail the store of each agent 
     def __str__(self):
-        return "store=" + str(self.store) + ', x=' + str(self.x) \
-    + ', y=' + str(self.y)
+        return "i=" + str(self.i) + ", store" + str(self.store) + \
+    ', x=' + str(self.x) + ', y=' + str(self.y)
         
-# MAKE A MOVE AGENT WITHIN THIS CLASS 
 
     def move(self):
 # following changes the x coordinates
@@ -37,8 +39,6 @@ class Agent:
         else:
             self.y = (self.y - 1) % 100
 
-#  below is a new method so that the agents can eat the environment data. If 
-# there is 10 in the environment plot, then the agent can gain 10. 
 
     def eat(self): 
         if self.environment[self.y][self.x] > 10:
@@ -50,10 +50,28 @@ class Agent:
         if self.store >= 100:
             self.environment[self.y][self.x] += self.store
             self.store = 0 
-#  the above makes sure that if agents has 'nibbled' too much data 
- # (over 100), they 'dump' the store back onto the environment; 
- # leaving the agents store as 0. 
-                
+            
+# The below is a new method for the Communications practical. Will allow agents
+#  to look into their 'neighbourhood' (surrounding environment)
+    def share_with_neighbours (self, neighbourhood):
+# the following allows agents to loop through each other, calculate the distance
+# and see the location of other agents. If location is less than or equal to
+# the size of the neighbourhood, each agent's store will average the same as in 
+# their neighbourhood (by sharing the environment data)
+        for i in range(len(self.agents)):
+            distance = self.distance_between(self.agents[i])
+            if distance <= neighbourhood:
+                ave = (self.store + self.agents[i].store) / 2
+                self.store = ave
+                self.agents[i].store = ave
+# following print was used to test that agents were sharing their stores with
+# each other
+                # print("sharing " + str(distance) + " " + str(ave))
+            
+    def distance_between(self, agents_row_b):
+        return (((self.x - agents_row_b.x)**2) +((self.y - agents_row_b.y)**2))**0.5
+   
+
     
     
     
