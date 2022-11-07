@@ -18,5 +18,5 @@ Every practical has two files, a model file and an agentframework file. They sho
 4) ANIMATIONS AND BEHAVIOUR PRACTICAL - a:b model.py, agentframework4.py, intxt
 - The output of this practical is an animated graphic, showing the agents moving, 'nibbling' the data, and stopping after they have consumed a certain amount of data. 
 
-You can access the files by going to the following repository:
+You can access the files by copying and pasting the following link, taking you to the repository:
 https://github.com/alicecampbe11/Assessment1leedsalicecampbell
