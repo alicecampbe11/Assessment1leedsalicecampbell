@@ -20,3 +20,5 @@ Every practical has two files, a model file and an agentframework file. They sho
 
 You can access the files by copying and pasting the following link, taking you to the repository:
 https://github.com/alicecampbe11/Assessment1leedsalicecampbell
+
+Click on 'show code' and the files required will show. 
